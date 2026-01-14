@@ -2,16 +2,13 @@
 export type State = 'solid' | 'liquid' | 'gas' | 'unknown';
 
 export enum ElementCategory {
-  NonMetal = 'NonMetal',
-  NobleGas = 'NobleGas',
-  AlkaliMetal = 'AlkaliMetal',
-  AlkalineEarth = 'AlkalineEarth',
-  Metalloid = 'Metalloid',
-  Halogen = 'Halogen',
-  PostTransitionMetal = 'PostTransitionMetal',
-  TransitionMetal = 'TransitionMetal',
-  Lanthanide = 'Lanthanide',
-  Actinide = 'Actinide'
+  K = 'K-Schale',
+  L = 'L-Schale',
+  M = 'M-Schale',
+  N = 'N-Schale',
+  O = 'O-Schale',
+  P = 'P-Schale',
+  Q = 'Q-Schale'
 }
 
 export interface ElementData {
@@ -21,9 +18,9 @@ export interface ElementData {
   atomicMass: number;
   category: ElementCategory;
   state: State;
-  meltingPoint: number | null; // Kelvin
-  boilingPoint: number | null; // Kelvin
-  density: number | null; // g/cm³ or g/L for gases
+  meltingPoint: number | null;
+  boilingPoint: number | null;
+  density: number | null;
   period: number;
   group: number;
   summary: string;

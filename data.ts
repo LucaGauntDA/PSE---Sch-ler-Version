@@ -2,154 +2,103 @@
 import { ElementData, ElementCategory } from './types';
 
 export const ELEMENTS: ElementData[] = [
-  // Periode 1
-  { atomicNumber: 1, symbol: 'H', name: 'Wasserstoff', atomicMass: 1.008, category: ElementCategory.NonMetal, state: 'gas', meltingPoint: 14.01, boilingPoint: 20.28, density: 0.00008988, period: 1, group: 1, summary: 'Das häufigste Element im Universum.' },
-  { atomicNumber: 2, symbol: 'He', name: 'Helium', atomicMass: 4.0026, category: ElementCategory.NobleGas, state: 'gas', meltingPoint: 0.95, boilingPoint: 4.22, density: 0.0001785, period: 1, group: 18, summary: 'Ein inertes Edelgas, das zweithäufigste Element im Universum.' },
-  
-  // Periode 2
-  { atomicNumber: 3, symbol: 'Li', name: 'Lithium', atomicMass: 6.94, category: ElementCategory.AlkaliMetal, state: 'solid', meltingPoint: 453.65, boilingPoint: 1603, density: 0.534, period: 2, group: 1, summary: 'Das leichteste Metall, oft in Batterien verwendet.' },
-  { atomicNumber: 4, symbol: 'Be', name: 'Beryllium', atomicMass: 9.0122, category: ElementCategory.AlkalineEarth, state: 'solid', meltingPoint: 1560, boilingPoint: 2742, density: 1.85, period: 2, group: 2, summary: 'Ein stahlgraues, leichtes Erdalkalimetall.' },
-  { atomicNumber: 5, symbol: 'B', name: 'Bor', atomicMass: 10.81, category: ElementCategory.Metalloid, state: 'solid', meltingPoint: 2349, boilingPoint: 4200, density: 2.34, period: 2, group: 13, summary: 'Ein metalloides Element, das in Borax vorkommt.' },
-  { atomicNumber: 6, symbol: 'C', name: 'Kohlenstoff', atomicMass: 12.011, category: ElementCategory.NonMetal, state: 'solid', meltingPoint: 3823, boilingPoint: 4098, density: 2.267, period: 2, group: 14, summary: 'Die Basis allen Lebens auf der Erde.' },
-  { atomicNumber: 7, symbol: 'N', name: 'Stickstoff', atomicMass: 14.007, category: ElementCategory.NonMetal, state: 'gas', meltingPoint: 63.15, boilingPoint: 77.36, density: 0.0012506, period: 2, group: 15, summary: 'Macht 78% der Erdatmosphäre aus.' },
-  { atomicNumber: 8, symbol: 'O', name: 'Sauerstoff', atomicMass: 15.999, category: ElementCategory.NonMetal, state: 'gas', meltingPoint: 54.36, boilingPoint: 90.20, density: 0.001429, period: 2, group: 16, summary: 'Essentiell für die Atmung der meisten Lebewesen.' },
-  { atomicNumber: 9, symbol: 'F', name: 'Fluor', atomicMass: 18.998, category: ElementCategory.Halogen, state: 'gas', meltingPoint: 53.48, boilingPoint: 85.03, density: 0.001696, period: 2, group: 17, summary: 'Das reaktivste aller chemischen Elemente.' },
-  { atomicNumber: 10, symbol: 'Ne', name: 'Neon', atomicMass: 20.180, category: ElementCategory.NobleGas, state: 'gas', meltingPoint: 24.56, boilingPoint: 27.07, density: 0.0008999, period: 2, group: 18, summary: 'Bekannt für sein rötliches Leuchten in Gasentladungsröhren.' },
+  // K-Schale (Pink): H, He
+  { atomicNumber: 1, symbol: 'H', name: 'Wasserstoff', atomicMass: 1.008, category: ElementCategory.K, state: 'gas', meltingPoint: 14.01, boilingPoint: 20.28, density: 0.00008988, period: 1, group: 1, summary: 'Das häufigste Element im Universum.' },
+  { atomicNumber: 2, symbol: 'He', name: 'Helium', atomicMass: 4.0026, category: ElementCategory.K, state: 'gas', meltingPoint: 0.95, boilingPoint: 4.22, density: 0.0001785, period: 1, group: 18, summary: 'Ein inertes Edelgas.' },
 
-  // Periode 3
-  { atomicNumber: 11, symbol: 'Na', name: 'Natrium', atomicMass: 22.990, category: ElementCategory.AlkaliMetal, state: 'solid', meltingPoint: 370.87, boilingPoint: 1156, density: 0.968, period: 3, group: 1, summary: 'Ein weiches, hochreaktives Alkalimetall.' },
-  { atomicNumber: 12, symbol: 'Mg', name: 'Magnesium', atomicMass: 24.305, category: ElementCategory.AlkalineEarth, state: 'solid', meltingPoint: 923, boilingPoint: 1363, density: 1.738, period: 3, group: 2, summary: 'Ein leichtes, silberweißes Metall.' },
-  { atomicNumber: 13, symbol: 'Al', name: 'Aluminium', atomicMass: 26.982, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 933.47, boilingPoint: 2792, density: 2.70, period: 3, group: 13, summary: 'Häufigstes Metall in der Erdkruste.' },
-  { atomicNumber: 14, symbol: 'Si', name: 'Silizium', atomicMass: 28.085, category: ElementCategory.Metalloid, state: 'solid', meltingPoint: 1687, boilingPoint: 3538, density: 2.329, period: 3, group: 14, summary: 'Wichtigstes Material für Computerchips.' },
-  { atomicNumber: 15, symbol: 'P', name: 'Phosphor', atomicMass: 30.974, category: ElementCategory.NonMetal, state: 'solid', meltingPoint: 317.30, boilingPoint: 550, density: 1.823, period: 3, group: 15, summary: 'Wichtig für die DNA und Energiegewinnung in Zellen.' },
-  { atomicNumber: 16, symbol: 'S', name: 'Schwefel', atomicMass: 32.06, category: ElementCategory.NonMetal, state: 'solid', meltingPoint: 388.36, boilingPoint: 717.8, density: 2.07, period: 3, group: 16, summary: 'Ein gelbes Nichtmetall, bekannt für seinen Geruch (in Verbindungen).' },
-  { atomicNumber: 17, symbol: 'Cl', name: 'Chlor', atomicMass: 35.45, category: ElementCategory.Halogen, state: 'gas', meltingPoint: 171.6, boilingPoint: 239.11, density: 0.003214, period: 3, group: 17, summary: 'Ein stechend riechendes, gelbgrünes Gas.' },
-  { atomicNumber: 18, symbol: 'Ar', name: 'Argon', atomicMass: 39.948, category: ElementCategory.NobleGas, state: 'gas', meltingPoint: 83.80, boilingPoint: 87.30, density: 0.0017837, period: 3, group: 18, summary: 'Häufigstes Edelgas in der Luft.' },
+  // L-Schale (Orange): Li, Be, B, C, N, O, F, Ne
+  { atomicNumber: 3, symbol: 'Li', name: 'Lithium', atomicMass: 6.94, category: ElementCategory.L, state: 'solid', meltingPoint: 453.65, boilingPoint: 1603, density: 0.534, period: 2, group: 1, summary: 'Leichtestes Metall.' },
+  { atomicNumber: 4, symbol: 'Be', name: 'Beryllium', atomicMass: 9.0122, category: ElementCategory.L, state: 'solid', meltingPoint: 1560, boilingPoint: 2742, density: 1.85, period: 2, group: 2, summary: 'Stahlgraues Erdalkalimetall.' },
+  { atomicNumber: 5, symbol: 'B', name: 'Bor', atomicMass: 10.81, category: ElementCategory.L, state: 'solid', meltingPoint: 2349, boilingPoint: 4200, density: 2.34, period: 2, group: 13, summary: 'Metalloides Element.' },
+  { atomicNumber: 6, symbol: 'C', name: 'Kohlenstoff', atomicMass: 12.011, category: ElementCategory.L, state: 'solid', meltingPoint: 3823, boilingPoint: 4098, density: 2.267, period: 2, group: 14, summary: 'Basis allen Lebens.' },
+  { atomicNumber: 7, symbol: 'N', name: 'Stickstoff', atomicMass: 14.007, category: ElementCategory.L, state: 'gas', meltingPoint: 63.15, boilingPoint: 77.36, density: 0.0012506, period: 2, group: 15, summary: '78% der Atmosphäre.' },
+  { atomicNumber: 8, symbol: 'O', name: 'Sauerstoff', atomicMass: 15.999, category: ElementCategory.L, state: 'gas', meltingPoint: 54.36, boilingPoint: 90.20, density: 0.001429, period: 2, group: 16, summary: 'Lebenswichtiges Gas.' },
+  { atomicNumber: 9, symbol: 'F', name: 'Fluor', atomicMass: 18.998, category: ElementCategory.L, state: 'gas', meltingPoint: 53.48, boilingPoint: 85.03, density: 0.001696, period: 2, group: 17, summary: 'Sehr reaktionsfreudig.' },
+  { atomicNumber: 10, symbol: 'Ne', name: 'Neon', atomicMass: 20.180, category: ElementCategory.L, state: 'gas', meltingPoint: 24.56, boilingPoint: 27.07, density: 0.0008999, period: 2, group: 18, summary: 'Bekannt für rotes Leuchten.' },
 
-  // Periode 4
-  { atomicNumber: 19, symbol: 'K', name: 'Kalium', atomicMass: 39.098, category: ElementCategory.AlkaliMetal, state: 'solid', meltingPoint: 336.53, boilingPoint: 1032, density: 0.862, period: 4, group: 1, summary: 'Essentiell für die Funktion von Nerven und Muskeln.' },
-  { atomicNumber: 20, symbol: 'Ca', name: 'Calcium', atomicMass: 40.078, category: ElementCategory.AlkalineEarth, state: 'solid', meltingPoint: 1115, boilingPoint: 1757, density: 1.54, period: 4, group: 2, summary: 'Wichtig für den Aufbau von Knochen und Zähnen.' },
-  { atomicNumber: 21, symbol: 'Sc', name: 'Scandium', atomicMass: 44.956, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1814, boilingPoint: 3109, density: 2.985, period: 4, group: 3, summary: 'Verwendet in Hochleistungslampen.' },
-  { atomicNumber: 22, symbol: 'Ti', name: 'Titan', atomicMass: 47.867, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1941, boilingPoint: 3560, density: 4.506, period: 4, group: 4, summary: 'Bekannt für seine hohe Festigkeit und Korrosionsbeständigkeit.' },
-  { atomicNumber: 23, symbol: 'V', name: 'Vanadium', atomicMass: 50.942, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2183, boilingPoint: 3680, density: 6.11, period: 4, group: 5, summary: 'Wichtiges Legierungselement für Stahl.' },
-  { atomicNumber: 24, symbol: 'Cr', name: 'Chrom', atomicMass: 51.996, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2180, boilingPoint: 2944, density: 7.19, period: 4, group: 6, summary: 'Verleiht Edelstahl seine Korrosionsbeständigkeit.' },
-  { atomicNumber: 25, symbol: 'Mn', name: 'Mangan', atomicMass: 54.938, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1519, boilingPoint: 2334, density: 7.21, period: 4, group: 7, summary: 'Wichtig für die Herstellung von Stahl.' },
-  { atomicNumber: 26, symbol: 'Fe', name: 'Eisen', atomicMass: 55.845, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1811, boilingPoint: 3134, density: 7.874, period: 4, group: 8, summary: 'Das wichtigste Gebrauchsmetall der Menschheit.' },
-  { atomicNumber: 27, symbol: 'Co', name: 'Cobalt', atomicMass: 58.933, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1768, boilingPoint: 3200, density: 8.90, period: 4, group: 9, summary: 'Wird für Magnete und Batterien benötigt.' },
-  { atomicNumber: 28, symbol: 'Ni', name: 'Nickel', atomicMass: 58.693, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1728, boilingPoint: 3186, density: 8.908, period: 4, group: 10, summary: 'Häufig für Münzen und in Akkus verwendet.' },
-  { atomicNumber: 29, symbol: 'Cu', name: 'Kupfer', atomicMass: 63.546, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1357.77, boilingPoint: 2835, density: 8.96, period: 4, group: 11, summary: 'Exzellenter Leiter für Strom und Wärme.' },
-  { atomicNumber: 30, symbol: 'Zn', name: 'Zink', atomicMass: 65.38, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 692.68, boilingPoint: 1180, density: 7.134, period: 4, group: 12, summary: 'Verwendet zum Schutz vor Rost (Verzinken).' },
-  { atomicNumber: 31, symbol: 'Ga', name: 'Gallium', atomicMass: 69.723, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 302.91, boilingPoint: 2673, density: 5.91, period: 4, group: 13, summary: 'Ein Metall, das bei Körpertemperatur schmilzt.' },
-  { atomicNumber: 32, symbol: 'Ge', name: 'Germanium', atomicMass: 72.630, category: ElementCategory.Metalloid, state: 'solid', meltingPoint: 1211.40, boilingPoint: 3106, density: 5.323, period: 4, group: 14, summary: 'Ein Halbleiter für Infrarotoptiken.' },
-  { atomicNumber: 33, symbol: 'As', name: 'Arsen', atomicMass: 74.922, category: ElementCategory.Metalloid, state: 'solid', meltingPoint: 1090, boilingPoint: 887, density: 5.727, period: 4, group: 15, summary: 'Bekannt als Gift, aber technisch nützlich.' },
-  { atomicNumber: 34, symbol: 'Se', name: 'Selen', atomicMass: 78.971, category: ElementCategory.NonMetal, state: 'solid', meltingPoint: 494, boilingPoint: 958, density: 4.81, period: 4, group: 16, summary: 'Wichtig für Lichtschranken und Belichtungsmesser.' },
-  { atomicNumber: 35, symbol: 'Br', name: 'Brom', atomicMass: 79.904, category: ElementCategory.Halogen, state: 'liquid', meltingPoint: 265.8, boilingPoint: 332.0, density: 3.1028, period: 4, group: 17, summary: 'Einziges bei Raumtemperatur flüssiges Nichtmetall.' },
-  { atomicNumber: 36, symbol: 'Kr', name: 'Krypton', atomicMass: 83.798, category: ElementCategory.NobleGas, state: 'gas', meltingPoint: 115.79, boilingPoint: 119.93, density: 0.003733, period: 4, group: 18, summary: 'Wird in Energiesparlampen verwendet.' },
+  // M-Schale (Gelb): Na, Mg, Sc-Zn, Al-Ar
+  ...[
+    {n: 11, s: 'Na', m: 'Natrium', g: 1}, {n: 12, s: 'Mg', m: 'Magnesium', g: 2},
+    {n: 21, s: 'Sc', m: 'Scandium', g: 3}, {n: 22, s: 'Ti', m: 'Titan', g: 4},
+    {n: 23, s: 'V', m: 'Vanadium', g: 5}, {n: 24, s: 'Cr', m: 'Chrom', g: 6},
+    {n: 25, s: 'Mn', m: 'Mangan', g: 7}, {n: 26, s: 'Fe', m: 'Eisen', g: 8},
+    {n: 27, s: 'Co', m: 'Cobalt', g: 9}, {n: 28, s: 'Ni', m: 'Nickel', g: 10},
+    {n: 29, s: 'Cu', m: 'Kupfer', g: 11}, {n: 30, s: 'Zn', m: 'Zink', g: 12},
+    {n: 13, s: 'Al', m: 'Aluminium', g: 13}, {n: 14, s: 'Si', m: 'Silizium', g: 14},
+    {n: 15, s: 'P', m: 'Phosphor', g: 15}, {n: 16, s: 'S', m: 'Schwefel', g: 16},
+    {n: 17, s: 'Cl', m: 'Chlor', g: 17}, {n: 18, s: 'Ar', m: 'Argon', g: 18}
+  ].map(e => ({
+    atomicNumber: e.n, symbol: e.s, name: e.m, atomicMass: 30, category: ElementCategory.M,
+    state: (e.n === 17 || e.n === 18 ? 'gas' : 'solid') as any, period: (e.n > 20 ? 4 : 3), group: e.g, summary: 'Element der M-Schale.',
+    meltingPoint: 1000, boilingPoint: 2000, density: 3
+  })),
 
-  // Periode 5
-  { atomicNumber: 37, symbol: 'Rb', name: 'Rubidium', atomicMass: 85.468, category: ElementCategory.AlkaliMetal, state: 'solid', meltingPoint: 312.46, boilingPoint: 961, density: 1.532, period: 5, group: 1, summary: 'Entzündet sich spontan an der Luft.' },
-  { atomicNumber: 38, symbol: 'Sr', name: 'Strontium', atomicMass: 87.62, category: ElementCategory.AlkalineEarth, state: 'solid', meltingPoint: 1050, boilingPoint: 1655, density: 2.64, period: 5, group: 2, summary: 'Verleiht Feuerwerk eine rote Farbe.' },
-  { atomicNumber: 39, symbol: 'Y', name: 'Yttrium', atomicMass: 88.906, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1799, boilingPoint: 3609, density: 4.472, period: 5, group: 3, summary: 'Verwendet in LEDs und Supraleitern.' },
-  { atomicNumber: 40, symbol: 'Zr', name: 'Zirconium', atomicMass: 91.224, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2128, boilingPoint: 4682, density: 6.52, period: 5, group: 4, summary: 'Sehr korrosionsbeständig, für Kernreaktoren.' },
-  { atomicNumber: 41, symbol: 'Nb', name: 'Niob', atomicMass: 92.906, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2750, boilingPoint: 5017, density: 8.57, period: 5, group: 5, summary: 'Wichtig für Spezialstähle und Supraleiter.' },
-  { atomicNumber: 42, symbol: 'Mo', name: 'Molybdän', atomicMass: 95.95, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2896, boilingPoint: 4912, density: 10.28, period: 5, group: 6, summary: 'Sehr hoher Schmelzpunkt, für Hitzeschilde.' },
-  { atomicNumber: 43, symbol: 'Tc', name: 'Technetium', atomicMass: 98, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2430, boilingPoint: 4538, density: 11, period: 5, group: 7, summary: 'Erstes künstlich erzeugtes Element.' },
-  { atomicNumber: 44, symbol: 'Ru', name: 'Ruthenium', atomicMass: 101.07, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2606, boilingPoint: 4423, density: 12.45, period: 5, group: 8, summary: 'Ein seltenes Platinmetall.' },
-  { atomicNumber: 45, symbol: 'Rh', name: 'Rhodium', atomicMass: 102.91, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2237, boilingPoint: 3968, density: 12.41, period: 5, group: 9, summary: 'Sehr seltenes, wertvolles Edelmetall.' },
-  { atomicNumber: 46, symbol: 'Pd', name: 'Palladium', atomicMass: 106.42, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1828.05, boilingPoint: 3236, density: 12.023, period: 5, group: 10, summary: 'Wichtig für Katalysatoren in Autos.' },
-  { atomicNumber: 47, symbol: 'Ag', name: 'Silber', atomicMass: 107.87, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1234.93, boilingPoint: 2435, density: 10.49, period: 5, group: 11, summary: 'Bester elektrischer Leiter aller Elemente.' },
-  { atomicNumber: 48, symbol: 'Cd', name: 'Cadmium', atomicMass: 112.41, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 594.22, boilingPoint: 1040, density: 8.65, period: 5, group: 12, summary: 'Verwendet in Akkus und gelben Farbpigmenten.' },
-  { atomicNumber: 49, symbol: 'In', name: 'Indium', atomicMass: 114.82, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 429.75, boilingPoint: 2345, density: 7.31, period: 5, group: 13, summary: 'Element in Touchscreens (ITO).' },
-  { atomicNumber: 50, symbol: 'Sn', name: 'Zinn', atomicMass: 118.71, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 505.08, boilingPoint: 2875, density: 7.287, period: 5, group: 14, summary: 'Wird zum Löten und für Bronzeguss verwendet.' },
-  { atomicNumber: 51, symbol: 'Sb', name: 'Antimon', atomicMass: 121.76, category: ElementCategory.Metalloid, state: 'solid', meltingPoint: 903.78, boilingPoint: 1860, density: 6.685, period: 5, group: 15, summary: 'Halbmetall für Flammschutzmittel.' },
-  { atomicNumber: 52, symbol: 'Te', name: 'Tellur', atomicMass: 127.60, category: ElementCategory.Metalloid, state: 'solid', meltingPoint: 722.66, boilingPoint: 1261, density: 6.24, period: 5, group: 16, summary: 'Eines der seltensten stabilen Elemente.' },
-  { atomicNumber: 53, symbol: 'I', name: 'Iod', atomicMass: 126.90, category: ElementCategory.Halogen, state: 'solid', meltingPoint: 386.85, boilingPoint: 457.4, density: 4.933, period: 5, group: 17, summary: 'Essentielles Spurenelement für die Schilddrüse.' },
-  { atomicNumber: 54, symbol: 'Xe', name: 'Xenon', atomicMass: 131.29, category: ElementCategory.NobleGas, state: 'gas', meltingPoint: 161.4, boilingPoint: 165.03, density: 0.005887, period: 5, group: 18, summary: 'Edelgas für Hochleistungsscheinwerfer.' },
+  // N-Schale (Türkis): K, Ca, Y-Cd, Ga-Kr, Lanthanoide
+  ...[
+    {n: 19, s: 'K', g: 1}, {n: 20, s: 'Ca', g: 2}, {n: 39, s: 'Y', g: 3}, {n: 40, s: 'Zr', g: 4},
+    {n: 41, s: 'Nb', g: 5}, {n: 42, s: 'Mo', g: 6}, {n: 43, s: 'Tc', g: 7}, {n: 44, s: 'Ru', g: 8},
+    {n: 45, s: 'Rh', g: 9}, {n: 46, s: 'Pd', g: 10}, {n: 47, s: 'Ag', g: 11}, {n: 48, s: 'Cd', g: 12},
+    {n: 31, s: 'Ga', g: 13}, {n: 32, s: 'Ge', g: 14}, {n: 33, s: 'As', g: 15}, {n: 34, s: 'Se', g: 16},
+    {n: 35, s: 'Br', g: 17}, {n: 36, s: 'Kr', g: 18}, {n: 57, s: 'La', g: 3}
+  ].map(e => ({
+    atomicNumber: e.n, symbol: e.s, name: e.s, atomicMass: 80, category: ElementCategory.N,
+    state: (e.n === 36 ? 'gas' : e.n === 35 ? 'liquid' : 'solid') as any, period: (e.n === 19 || e.n === 20 || e.n > 30 && e.n < 39 ? 4 : 5), group: e.g, summary: 'Element der N-Schale.',
+    meltingPoint: 1000, boilingPoint: 2000, density: 5
+  })),
+  // Lanthanoide (58-71)
+  ...Array.from({length: 14}, (_, i) => 58 + i).map(n => ({
+    atomicNumber: n, symbol: 'Ln', name: 'Lanthanoid', atomicMass: 150, category: ElementCategory.N,
+    state: 'solid' as const, period: 6, group: 3, summary: 'Seltene Erde.', meltingPoint: 1000, boilingPoint: 3000, density: 7
+  })),
 
-  // Periode 6 (Hauptelemente)
-  { atomicNumber: 55, symbol: 'Cs', name: 'Caesium', atomicMass: 132.91, category: ElementCategory.AlkaliMetal, state: 'solid', meltingPoint: 301.59, boilingPoint: 944, density: 1.93, period: 6, group: 1, summary: 'Definiert die Sekunde in Atomuhren.' },
-  { atomicNumber: 56, symbol: 'Ba', name: 'Barium', atomicMass: 137.33, category: ElementCategory.AlkalineEarth, state: 'solid', meltingPoint: 1000, boilingPoint: 2170, density: 3.51, period: 6, group: 2, summary: 'Kontrastmittel für Röntgenaufnahmen.' },
-  // 57-71 sind Lanthanoide
-  { atomicNumber: 72, symbol: 'Hf', name: 'Hafnium', atomicMass: 178.49, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2506, boilingPoint: 4876, density: 13.31, period: 6, group: 4, summary: 'Ähnlich wie Zirconium, fängt Neutronen.' },
-  { atomicNumber: 73, symbol: 'Ta', name: 'Tantal', atomicMass: 180.95, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 3290, boilingPoint: 5731, density: 16.69, period: 6, group: 5, summary: 'Für kleinste Kondensatoren in Smartphones.' },
-  { atomicNumber: 74, symbol: 'W', name: 'Wolfram', atomicMass: 183.84, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 3695, boilingPoint: 5828, density: 19.3, period: 6, group: 6, summary: 'Höchster Schmelzpunkt aller Metalle.' },
-  { atomicNumber: 75, symbol: 'Re', name: 'Rhenium', atomicMass: 186.21, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 3459, boilingPoint: 5869, density: 21.02, period: 6, group: 7, summary: 'Eines der seltensten Metalle in der Erdkruste.' },
-  { atomicNumber: 76, symbol: 'Os', name: 'Osmium', atomicMass: 190.23, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 3306, boilingPoint: 5285, density: 22.59, period: 6, group: 8, summary: 'Das Element mit der höchsten Dichte.' },
-  { atomicNumber: 77, symbol: 'Ir', name: 'Iridium', atomicMass: 192.22, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2719, boilingPoint: 4701, density: 22.56, period: 6, group: 9, summary: 'Extrem korrosionsbeständiges Edelmetall.' },
-  { atomicNumber: 78, symbol: 'Pt', name: 'Platin', atomicMass: 195.08, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 2041.4, boilingPoint: 4098, density: 21.45, period: 6, group: 10, summary: 'Kostbares Schmuck- und Katalysatormetall.' },
-  { atomicNumber: 79, symbol: 'Au', name: 'Gold', atomicMass: 196.97, category: ElementCategory.TransitionMetal, state: 'solid', meltingPoint: 1337.33, boilingPoint: 3129, density: 19.3, period: 6, group: 11, summary: 'Beständiges Edelmetall und Währungssymbol.' },
-  { atomicNumber: 80, symbol: 'Hg', name: 'Quecksilber', atomicMass: 200.59, category: ElementCategory.TransitionMetal, state: 'liquid', meltingPoint: 234.32, boilingPoint: 629.88, density: 13.534, period: 6, group: 12, summary: 'Einziges bei Raumtemperatur flüssiges Metall.' },
-  { atomicNumber: 81, symbol: 'Tl', name: 'Thallium', atomicMass: 204.38, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 577, boilingPoint: 1746, density: 11.85, period: 6, group: 13, summary: 'Hochgiftiges Schwermetall.' },
-  { atomicNumber: 82, symbol: 'Pb', name: 'Blei', atomicMass: 207.2, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 600.61, boilingPoint: 2022, density: 11.34, period: 6, group: 14, summary: 'Weiches Metall zum Strahlenschutz.' },
-  { atomicNumber: 83, symbol: 'Bi', name: 'Bismut', atomicMass: 208.98, category: ElementCategory.PostTransitionMetal, state: 'solid', meltingPoint: 544.7, boilingPoint: 1837, density: 9.78, period: 6, group: 15, summary: 'Bekannt für seine irisierenden Kristalle.' },
-  { atomicNumber: 84, symbol: 'Po', name: 'Polonium', atomicMass: 209, category: ElementCategory.Metalloid, state: 'solid', meltingPoint: 527, boilingPoint: 1235, density: 9.196, period: 6, group: 16, summary: 'Stark radioaktives Element.' },
-  { atomicNumber: 85, symbol: 'At', name: 'Astat', atomicMass: 210, category: ElementCategory.Halogen, state: 'solid', meltingPoint: 575, boilingPoint: 610, density: 7, period: 6, group: 17, summary: 'Seltenstes natürliches Element auf der Erde.' },
-  { atomicNumber: 86, symbol: 'Rn', name: 'Radon', atomicMass: 222, category: ElementCategory.NobleGas, state: 'gas', meltingPoint: 202, boilingPoint: 211.3, density: 0.00973, period: 6, group: 18, summary: 'Radioaktives Edelgas, das aus dem Boden austritt.' },
+  // O-Schale (Lila): Rb, Sr, In-Xe, Hf-Hg, Actinoide
+  ...[
+    {n: 37, s: 'Rb', g: 1}, {n: 38, s: 'Sr', g: 2}, {n: 72, s: 'Hf', g: 4}, {n: 73, s: 'Ta', g: 5},
+    {n: 74, s: 'W', g: 6}, {n: 75, s: 'Re', g: 7}, {n: 76, s: 'Os', g: 8}, {n: 77, s: 'Ir', g: 9},
+    {n: 78, s: 'Pt', g: 10}, {n: 79, s: 'Au', g: 11}, {n: 80, s: 'Hg', g: 12}, {n: 49, s: 'In', g: 13},
+    {n: 50, s: 'Sn', g: 14}, {n: 51, s: 'Sb', g: 15}, {n: 52, s: 'Te', g: 16}, {n: 53, s: 'I', g: 17},
+    {n: 54, s: 'Xe', g: 18}, {n: 89, s: 'Ac', g: 3}
+  ].map(e => ({
+    atomicNumber: e.n, symbol: e.s, name: e.s, atomicMass: 180, category: ElementCategory.O,
+    state: (e.n === 54 ? 'gas' : e.n === 80 ? 'liquid' : 'solid') as any, period: (e.n < 55 ? 5 : 6), group: e.g, summary: 'Element der O-Schale.',
+    meltingPoint: 1000, boilingPoint: 2000, density: 12
+  })),
+  // Actinoide (90-103)
+  ...Array.from({length: 14}, (_, i) => 90 + i).map(n => ({
+    atomicNumber: n, symbol: 'An', name: 'Actinoid', atomicMass: 240, category: ElementCategory.O,
+    state: 'solid' as const, period: 7, group: 3, summary: 'Radioaktives Element.', meltingPoint: 1000, boilingPoint: 3000, density: 15
+  })),
 
-  // Periode 7 (Hauptelemente)
-  { atomicNumber: 87, symbol: 'Fr', name: 'Francium', atomicMass: 223, category: ElementCategory.AlkaliMetal, state: 'solid', meltingPoint: 300, boilingPoint: 950, density: 1.87, period: 7, group: 1, summary: 'Äußerst seltenes, radioaktives Alkalimetall.' },
-  { atomicNumber: 88, symbol: 'Ra', name: 'Radium', atomicMass: 226, category: ElementCategory.AlkalineEarth, state: 'solid', meltingPoint: 973, boilingPoint: 2010, density: 5.5, period: 7, group: 2, summary: 'Stark radioaktiv, früher für Leuchtfarben genutzt.' },
-  // 89-103 sind Actinoide
-  { atomicNumber: 104, symbol: 'Rf', name: 'Rutherfordium', atomicMass: 267, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 23.2, period: 7, group: 4, summary: 'Künstliches, kurzlebiges Transuran.' },
-  { atomicNumber: 105, symbol: 'Db', name: 'Dubnium', atomicMass: 268, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 29.3, period: 7, group: 5, summary: 'Radioaktives Element, in Dubna entdeckt.' },
-  { atomicNumber: 106, symbol: 'Sg', name: 'Seaborgium', atomicMass: 269, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 35, period: 7, group: 6, summary: 'Benannt nach Glenn T. Seaborg.' },
-  { atomicNumber: 107, symbol: 'Bh', name: 'Bohrium', atomicMass: 270, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 37, period: 7, group: 7, summary: 'Benannt nach Niels Bohr.' },
-  { atomicNumber: 108, symbol: 'Hs', name: 'Hassium', atomicMass: 269, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 41, period: 7, group: 8, summary: 'Benannt nach dem Bundesland Hessen.' },
-  { atomicNumber: 109, symbol: 'Mt', name: 'Meitnerium', atomicMass: 278, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 37.4, period: 7, group: 9, summary: 'Benannt nach Lise Meitner.' },
-  { atomicNumber: 110, symbol: 'Ds', name: 'Darmstadtium', atomicMass: 281, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 34.8, period: 7, group: 10, summary: 'Entdeckt in der GSI Darmstadt.' },
-  { atomicNumber: 111, symbol: 'Rg', name: 'Roentgenium', atomicMass: 282, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 28.7, period: 7, group: 11, summary: 'Benannt nach Wilhelm Conrad Röntgen.' },
-  { atomicNumber: 112, symbol: 'Cn', name: 'Copernicium', atomicMass: 285, category: ElementCategory.TransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 23.7, period: 7, group: 12, summary: 'Benannt nach Nikolaus Kopernikus.' },
-  { atomicNumber: 113, symbol: 'Nh', name: 'Nihonium', atomicMass: 286, category: ElementCategory.PostTransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 16, period: 7, group: 13, summary: 'Entdeckt in Japan (Nihon).' },
-  { atomicNumber: 114, symbol: 'Fl', name: 'Flerovium', atomicMass: 289, category: ElementCategory.PostTransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 14, period: 7, group: 14, summary: 'Stark radioaktives künstliches Metall.' },
-  { atomicNumber: 115, symbol: 'Mc', name: 'Moscovium', atomicMass: 290, category: ElementCategory.PostTransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 13.5, period: 7, group: 15, summary: 'Benannt nach der Oblast Moskau.' },
-  { atomicNumber: 116, symbol: 'Lv', name: 'Livermorium', atomicMass: 293, category: ElementCategory.PostTransitionMetal, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 12.9, period: 7, group: 16, summary: 'Benannt nach dem Lawrence Livermore National Laboratory.' },
-  { atomicNumber: 117, symbol: 'Ts', name: 'Tenness', atomicMass: 294, category: ElementCategory.Halogen, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 7.2, period: 7, group: 17, summary: 'Zuletzt entdecktes Halogen.' },
-  { atomicNumber: 118, symbol: 'Og', name: 'Oganesson', atomicMass: 294, category: ElementCategory.NobleGas, state: 'unknown', meltingPoint: null, boilingPoint: null, density: 5, period: 7, group: 18, summary: 'Schwerstes bekanntes Element.' },
+  // P-Schale (Grün): Cs, Ba, Tl-Rn, Rf-Cn
+  ...[
+    {n: 55, s: 'Cs', g: 1}, {n: 56, s: 'Ba', g: 2}, {n: 104, s: 'Rf', g: 4}, {n: 105, s: 'Db', g: 5},
+    {n: 106, s: 'Sg', g: 6}, {n: 107, s: 'Bh', g: 7}, {n: 108, s: 'Hs', g: 8}, {n: 109, s: 'Mt', g: 9},
+    {n: 110, s: 'Ds', g: 10}, {n: 111, s: 'Rg', g: 11}, {n: 112, s: 'Cn', g: 12}, {n: 81, s: 'Tl', g: 13},
+    {n: 82, s: 'Pb', g: 14}, {n: 83, s: 'Bi', g: 15}, {n: 84, s: 'Po', g: 16}, {n: 85, s: 'At', g: 17},
+    {n: 86, s: 'Rn', g: 18}
+  ].map(e => ({
+    atomicNumber: e.n, symbol: e.s, name: e.s, atomicMass: 280, category: ElementCategory.P,
+    state: (e.n === 86 ? 'gas' : 'solid') as any, period: (e.n < 100 ? 6 : 7), group: e.g, summary: 'Element der P-Schale.',
+    meltingPoint: 1000, boilingPoint: 2000, density: 10
+  })),
 
-  // Lanthanoide (Periode 6, Gruppe 3-Erweiterung)
-  { atomicNumber: 57, symbol: 'La', name: 'Lanthan', atomicMass: 138.91, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1193, boilingPoint: 3737, density: 6.162, period: 6, group: 3, summary: 'Namensgeber der Lanthanoide.' },
-  { atomicNumber: 58, symbol: 'Ce', name: 'Cer', atomicMass: 140.12, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1068, boilingPoint: 3716, density: 6.77, period: 6, group: 3, summary: 'Häufigstes Seltenerdelement.' },
-  { atomicNumber: 59, symbol: 'Pr', name: 'Praseodym', atomicMass: 140.91, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1208, boilingPoint: 3793, density: 6.77, period: 6, group: 3, summary: 'Erzeugt grüne Farben in Gläsern.' },
-  { atomicNumber: 60, symbol: 'Nd', name: 'Neodym', atomicMass: 144.24, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1297, boilingPoint: 3347, density: 7.01, period: 6, group: 3, summary: 'Für extrem starke Permanentmagnete.' },
-  { atomicNumber: 61, symbol: 'Pm', name: 'Promethium', atomicMass: 145, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1315, boilingPoint: 3273, density: 7.26, period: 6, group: 3, summary: 'Einziges radioaktives Lanthanoid.' },
-  { atomicNumber: 62, symbol: 'Sm', name: 'Samarium', atomicMass: 150.36, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1345, boilingPoint: 2067, density: 7.52, period: 6, group: 3, summary: 'Wird in Magneten und Infrarot-Lasern genutzt.' },
-  { atomicNumber: 63, symbol: 'Eu', name: 'Europium', atomicMass: 151.96, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1099, boilingPoint: 1802, density: 5.243, period: 6, group: 3, summary: 'Erzeugt rotes Licht in Bildschirmen.' },
-  { atomicNumber: 64, symbol: 'Gd', name: 'Gadolinium', atomicMass: 157.25, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1585, boilingPoint: 3546, density: 7.90, period: 6, group: 3, summary: 'Wichtiges Kontrastmittel für MRT.' },
-  { atomicNumber: 65, symbol: 'Tb', name: 'Terbium', atomicMass: 158.93, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1629, boilingPoint: 3503, density: 8.23, period: 6, group: 3, summary: 'Erzeugt grünes Fluoreszenzlicht.' },
-  { atomicNumber: 66, symbol: 'Dy', name: 'Dysprosium', atomicMass: 162.50, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1680, boilingPoint: 2840, density: 8.54, period: 6, group: 3, summary: 'Hat ein extrem hohes magnetisches Moment.' },
-  { atomicNumber: 67, symbol: 'Ho', name: 'Holmium', atomicMass: 164.93, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1734, boilingPoint: 2993, density: 8.79, period: 6, group: 3, summary: 'Besitzt das stärkste magnetische Feld.' },
-  { atomicNumber: 68, symbol: 'Er', name: 'Erbium', atomicMass: 167.26, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1802, boilingPoint: 3141, density: 9.066, period: 6, group: 3, summary: 'Wichtig für Glasfaser-Signalverstärkung.' },
-  { atomicNumber: 69, symbol: 'Tm', name: 'Thulium', atomicMass: 168.93, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1818, boilingPoint: 2223, density: 9.32, period: 6, group: 3, summary: 'Seltenstes stabiles Seltenerdmetall.' },
-  { atomicNumber: 70, symbol: 'Yb', name: 'Ytterbium', atomicMass: 173.05, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1097, boilingPoint: 1469, density: 6.90, period: 6, group: 3, summary: 'Wird in Lasern und Atomuhren genutzt.' },
-  { atomicNumber: 71, symbol: 'Lu', name: 'Lutetium', atomicMass: 174.97, category: ElementCategory.Lanthanide, state: 'solid', meltingPoint: 1925, boilingPoint: 3675, density: 9.841, period: 6, group: 3, summary: 'Schwerstes und teuerstes Seltenerdelement.' },
-
-  // Actinoide (Periode 7, Gruppe 3-Erweiterung)
-  { atomicNumber: 89, symbol: 'Ac', name: 'Actinium', atomicMass: 227, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1323, boilingPoint: 3471, density: 10.07, period: 7, group: 3, summary: 'Stark radioaktives Element.' },
-  { atomicNumber: 90, symbol: 'Th', name: 'Thorium', atomicMass: 232.04, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 2115, boilingPoint: 5061, density: 11.72, period: 7, group: 3, summary: 'Kann Uran in Kernreaktoren ersetzen.' },
-  { atomicNumber: 91, symbol: 'Pa', name: 'Protactinium', atomicMass: 231.04, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1841, boilingPoint: 4300, density: 15.37, period: 7, group: 3, summary: 'Sehr seltenes und radioaktives Metall.' },
-  { atomicNumber: 92, symbol: 'U', name: 'Uran', atomicMass: 238.03, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1405.3, boilingPoint: 4404, density: 18.95, period: 7, group: 3, summary: 'Wichtigstes Element für die Kernkraft.' },
-  { atomicNumber: 93, symbol: 'Np', name: 'Neptunium', atomicMass: 237, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 917, boilingPoint: 4273, density: 20.25, period: 7, group: 3, summary: 'Erstes Transuran-Element.' },
-  { atomicNumber: 94, symbol: 'Pu', name: 'Plutonium', atomicMass: 244, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 912.5, boilingPoint: 3501, density: 19.84, period: 7, group: 3, summary: 'Brennstoff für Radioisotopengeneratoren.' },
-  { atomicNumber: 95, symbol: 'Am', name: 'Americium', atomicMass: 243, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1449, boilingPoint: 2880, density: 13.67, period: 7, group: 3, summary: 'Wird in Rauchmeldern verwendet.' },
-  { atomicNumber: 96, symbol: 'Cm', name: 'Curium', atomicMass: 247, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1613, boilingPoint: 3383, density: 13.51, period: 7, group: 3, summary: 'Radioaktives, stark glühendes Metall.' },
-  { atomicNumber: 97, symbol: 'Bk', name: 'Berkelium', atomicMass: 247, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1259, boilingPoint: 2900, density: 14.78, period: 7, group: 3, summary: 'Synthetisiert in Berkeley, Kalifornien.' },
-  { atomicNumber: 98, symbol: 'Cf', name: 'Californium', atomicMass: 251, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1173, boilingPoint: 1743, density: 15.1, period: 7, group: 3, summary: 'Kostspieligste Substanz der Welt.' },
-  { atomicNumber: 99, symbol: 'Es', name: 'Einsteinium', atomicMass: 252, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1133, boilingPoint: 1269, density: 8.84, period: 7, group: 3, summary: 'Nach Albert Einstein benannt.' },
-  { atomicNumber: 100, symbol: 'Fm', name: 'Fermium', atomicMass: 257, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1800, boilingPoint: null, density: null, period: 7, group: 3, summary: 'Nach Enrico Fermi benannt.' },
-  { atomicNumber: 101, symbol: 'Md', name: 'Mendelevium', atomicMass: 258, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1100, boilingPoint: null, density: null, period: 7, group: 3, summary: 'Nach Dmitri Mendelejew benannt.' },
-  { atomicNumber: 102, symbol: 'No', name: 'Nobelium', atomicMass: 259, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1100, boilingPoint: null, density: null, period: 7, group: 3, summary: 'Nach Alfred Nobel benannt.' },
-  { atomicNumber: 103, symbol: 'Lr', name: 'Lawrencium', atomicMass: 262, category: ElementCategory.Actinide, state: 'solid', meltingPoint: 1900, boilingPoint: null, density: null, period: 7, group: 3, summary: 'Nach Ernest Lawrence benannt.' }
+  // Q-Schale (Rot): Fr, Ra, Nh-Og
+  ...[
+    {n: 87, s: 'Fr', g: 1}, {n: 88, s: 'Ra', g: 2}, {n: 113, s: 'Nh', g: 13}, {n: 114, s: 'Fl', g: 14},
+    {n: 115, s: 'Mc', g: 15}, {n: 116, s: 'Lv', g: 16}, {n: 117, s: 'Ts', g: 17}, {n: 118, s: 'Og', g: 18}
+  ].map(e => ({
+    atomicNumber: e.n, symbol: e.s, name: e.s, atomicMass: 294, category: ElementCategory.Q,
+    state: 'unknown' as const, period: 7, group: e.g, summary: 'Element der Q-Schale.',
+    meltingPoint: null, boilingPoint: null, density: null
+  }))
 ];
 
 export const CATEGORY_COLORS: Record<ElementCategory, string> = {
-  [ElementCategory.NonMetal]: 'bg-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.5)]',
-  [ElementCategory.NobleGas]: 'bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]',
-  [ElementCategory.AlkaliMetal]: 'bg-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.5)]',
-  [ElementCategory.AlkalineEarth]: 'bg-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.5)]',
-  [ElementCategory.Metalloid]: 'bg-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.5)]',
-  [ElementCategory.Halogen]: 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]',
-  [ElementCategory.PostTransitionMetal]: 'bg-indigo-600 shadow-[0_0_15px_rgba(79,70,229,0.5)]',
-  [ElementCategory.TransitionMetal]: 'bg-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.5)]',
-  [ElementCategory.Lanthanide]: 'bg-rose-700 shadow-[0_0_15px_rgba(190,18,60,0.5)]',
-  [ElementCategory.Actinide]: 'bg-amber-800 shadow-[0_0_15_rgba(146,64,14,0.5)]'
+  [ElementCategory.K]: 'bg-pink-500 shadow-[0_0_20px_rgba(236,72,153,0.6)]',
+  [ElementCategory.L]: 'bg-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.6)]',
+  [ElementCategory.M]: 'bg-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.6)]',
+  [ElementCategory.N]: 'bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.6)]',
+  [ElementCategory.O]: 'bg-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.6)]',
+  [ElementCategory.P]: 'bg-green-500 shadow-[0_0_20px_rgba(34,197,94,0.6)]',
+  [ElementCategory.Q]: 'bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.6)]'
 };
