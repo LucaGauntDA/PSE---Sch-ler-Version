@@ -11,6 +11,12 @@ export enum ElementCategory {
   Q = 'Q-Schale'
 }
 
+export enum ElementClassification {
+  Metal = 'Metall',
+  Metalloid = 'Halbmetall',
+  NonMetal = 'Nichtmetall'
+}
+
 export interface ElementData {
   atomicNumber: number;
   symbol: string;
@@ -18,6 +24,7 @@ export interface ElementData {
   atomicMass: number;
   category: ElementCategory;
   state: State;
+  classification: ElementClassification;
   meltingPoint: number | null;
   boilingPoint: number | null;
   density: number | null;

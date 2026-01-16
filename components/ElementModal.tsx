@@ -1,20 +1,65 @@
 
 import React from 'react';
-import { ElementData, ElementCategory } from '../types';
+import { ElementData, ElementCategory, State } from '../types';
 import { CATEGORY_COLORS } from '../data';
+import { TempUnit } from '../App';
 
 interface ElementModalProps {
   element: ElementData | null;
   onClose: () => void;
+  tempUnit: TempUnit;
+  onToggleUnit: () => void;
 }
 
-const ElementModal: React.FC<ElementModalProps> = ({ element, onClose }) => {
+const STATE_LABELS: Record<State, string> = {
+  solid: 'fest',
+  liquid: 'flüssig',
+  gas: 'gasförmig',
+  unknown: 'unbekannt'
+};
+
+const ElementModal: React.FC<ElementModalProps> = ({ element, onClose, tempUnit, onToggleUnit }) => {
   if (!element) return null;
 
-  const DetailRow = ({ label, value }: { label: string; value: string | number | null }) => (
-    <div className="flex justify-between items-center py-2 border-b border-white/10">
+  const formatTemp = (k: number | null) => {
+    if (k === null) return 'N/A';
+    
+    let val: number;
+    let unitStr: string;
+
+    if (tempUnit === 'C') {
+      val = k - 273.15;
+      unitStr = '°C';
+    } else if (tempUnit === 'F') {
+      val = (k - 273.15) * 1.8 + 32;
+      unitStr = '°F';
+    } else {
+      val = k;
+      unitStr = 'K';
+    }
+
+    return `${val.toLocaleString('de-DE', { maximumFractionDigits: 2 })} ${unitStr}`;
+  };
+
+  const DetailRow = ({ 
+    label, 
+    value, 
+    isClickable, 
+    onClick 
+  }: { 
+    label: string; 
+    value: string | number | null; 
+    isClickable?: boolean;
+    onClick?: () => void;
+  }) => (
+    <div 
+      onClick={onClick}
+      className={`flex justify-between items-center py-2 border-b border-white/10 ${isClickable ? 'cursor-pointer transition-opacity active:opacity-60' : ''}`}
+    >
       <span className="text-gray-400 font-medium">{label}</span>
-      <span className="text-white font-mono">{value ?? 'N/A'}</span>
+      <span className="text-white font-mono">
+        {value ?? 'N/A'}
+      </span>
     </div>
   );
 
@@ -42,9 +87,19 @@ const ElementModal: React.FC<ElementModalProps> = ({ element, onClose }) => {
             <DetailRow label="Protonenzahl" value={element.atomicNumber} />
             <DetailRow label="Nukleonenzahl" value={element.atomicMass} />
             <DetailRow label="Dichte" value={element.density ? `${element.density} g/cm³` : 'N/A'} />
-            <DetailRow label="Zustand" value={element.state} />
-            <DetailRow label="Schmelzpunkt" value={element.meltingPoint ? `${element.meltingPoint} K` : 'N/A'} />
-            <DetailRow label="Siedepunkt" value={element.boilingPoint ? `${element.boilingPoint} K` : 'N/A'} />
+            <DetailRow label="Zustand" value={STATE_LABELS[element.state]} />
+            <DetailRow 
+              label="Schmelzpunkt" 
+              value={formatTemp(element.meltingPoint)} 
+              isClickable={element.meltingPoint !== null}
+              onClick={element.meltingPoint !== null ? onToggleUnit : undefined}
+            />
+            <DetailRow 
+              label="Siedepunkt" 
+              value={formatTemp(element.boilingPoint)} 
+              isClickable={element.boilingPoint !== null}
+              onClick={element.boilingPoint !== null ? onToggleUnit : undefined}
+            />
           </div>
 
           <div className="mt-8">
