@@ -18,6 +18,7 @@ const App: React.FC = () => {
   const [selectedElement, setSelectedElement] = useState<ElementData | null>(null);
   const [isLanthanoidExpanded, setIsLanthanoidExpanded] = useState(false);
   const [isActinoidExpanded, setIsActinoidExpanded] = useState(false);
+  const [isNebengruppeVisible, setIsNebengruppeVisible] = useState(true);
   
   // Temperature Unit state with localStorage
   const [tempUnit, setTempUnit] = useState<TempUnit>(() => {
@@ -177,17 +178,18 @@ const App: React.FC = () => {
 
   const renderTable = () => {
     const grid: React.ReactNode[] = [];
+    const columns = isNebengruppeVisible ? Array.from({ length: 18 }, (_, i) => i + 1) : [1, 2, 13, 14, 15, 16, 17, 18];
 
     // Header Row: Subtile Hauptgruppen (I-VIII)
     grid.push(<div key="label-header-corner" className="w-full h-8" />); // Corner empty
-    for (let c = 1; c <= 18; c++) {
+    columns.forEach(c => {
       const label = getMainGroupLabel(c);
       grid.push(
         <div key={`group-label-${c}`} className="w-full h-8 flex items-center justify-center">
           <span className="text-[10px] font-black font-mono text-indigo-500/30 uppercase tracking-widest">{label}</span>
         </div>
       );
-    }
+    });
 
     for (let r = 1; r <= 7; r++) {
       // Period Label: Subtile Periodennummer (1-7)
@@ -197,7 +199,7 @@ const App: React.FC = () => {
         </div>
       );
 
-      for (let c = 1; c <= 18; c++) {
+      columns.forEach(c => {
         const isExpansionCell = (r === 6 && c === 3) || (r === 7 && c === 3);
         const isLanthanoidTrigger = r === 6 && c === 3;
         const el = mainTableElements.find(e => e.period === r && e.group === c);
@@ -209,7 +211,7 @@ const App: React.FC = () => {
               <ElementTile element={el} rounded={rounded} onClick={setSelectedElement} />
             </div>
           );
-        } else if (isExpansionCell) {
+        } else if (isExpansionCell && isNebengruppeVisible) {
           const isActive = isLanthanoidTrigger ? isLanthanoidExpanded : isActinoidExpanded;
           const toggle = () => isLanthanoidTrigger ? setIsLanthanoidExpanded(!isLanthanoidExpanded) : setIsActinoidExpanded(!isActinoidExpanded);
           grid.push(
@@ -223,8 +225,9 @@ const App: React.FC = () => {
         } else {
           grid.push(<div key={`empty-${r}-${c}`} className="w-full aspect-[4/5] border border-transparent" />);
         }
-      }
+      });
     }
+
     return grid;
   };
 
@@ -236,7 +239,7 @@ const App: React.FC = () => {
             Periodensystem
           </h1>
           <p className="text-indigo-400/60 font-mono text-[10px] tracking-[0.4em] mt-2 uppercase hidden md:block">
-            der Elemente / Design Edition
+            der Elemente / Schüler-Edition
           </p>
         </div>
         <div className="flex justify-center order-first md:order-none">
@@ -341,6 +344,18 @@ const App: React.FC = () => {
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           </button>
+
+          <button 
+            onClick={() => setIsNebengruppeVisible(!isNebengruppeVisible)}
+            title={isNebengruppeVisible ? "Nebengruppen ausblenden" : "Nebengruppen einblenden"}
+            className={`control-btn w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center border transition-all active:scale-90 shadow-2xl ${!isNebengruppeVisible ? 'bg-indigo-600 border-indigo-400 text-white' : 'bg-slate-900/80 border-white/5 text-slate-400 hover:text-indigo-400 hover:bg-slate-800'}`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              {!isNebengruppeVisible && <path d="M9 3v18M15 3v18" opacity="0.3" />}
+              <path d="M3 9h18M3 15h18" />
+            </svg>
+          </button>
           
           <button 
             onClick={toggleTempUnit}
@@ -353,58 +368,64 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-[1500px] overflow-x-auto pb-8 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent relative z-10">
-        {hasNoResults && (
-          <div className="absolute inset-0 flex items-center justify-center z-[50] animate-in fade-in zoom-in-95 duration-500">
-            <div className="bg-slate-900/90 backdrop-blur-xl px-12 py-8 rounded-[3rem] border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
-              <span className="text-xl md:text-2xl font-black text-indigo-400 uppercase tracking-[0.3em]">
-                Element nicht gefunden.
-              </span>
+      <div className="w-full max-w-[1500px] flex flex-col items-center">
+        <div className="w-full overflow-x-auto pb-8 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent relative z-10 flex justify-center">
+          {hasNoResults && (
+            <div className="absolute inset-0 flex items-center justify-center z-[50] animate-in fade-in zoom-in-95 duration-500">
+              <div className="bg-slate-900/90 backdrop-blur-xl px-12 py-8 rounded-[3rem] border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
+                <span className="text-xl md:text-2xl font-black text-indigo-400 uppercase tracking-[0.3em]">
+                  Element nicht gefunden.
+                </span>
+              </div>
             </div>
+          )}
+          <div className={`ptable-grid border border-black/40 shadow-2xl bg-black/10 transition-all duration-500 ${hasNoResults ? 'opacity-20 blur-sm pointer-events-none' : 'opacity-100'} ${isNebengruppeVisible ? 'full-grid' : 'compact-grid'}`}>
+            {renderTable()}
           </div>
-        )}
-        <div className={`min-w-[1100px] lg:min-w-full ptable-grid border border-black/40 shadow-2xl bg-black/10 transition-all duration-500 ${hasNoResults ? 'opacity-20 blur-sm pointer-events-none' : 'opacity-100'}`}>
-          {renderTable()}
         </div>
-      </div>
 
-      <div className="w-full max-w-[1500px] flex flex-col gap-8 relative z-0">
-        {isLanthanoidExpanded && (
-          <div className="animate-in slide-in-from-top-6 fade-in duration-700 ease-out">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-px flex-grow bg-gradient-to-r from-transparent to-cyan-900/40"></div>
-              <h3 className="text-cyan-400 font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-3 px-6 py-2 rounded-2xl bg-cyan-950/20 border border-cyan-900/20 backdrop-blur-md">
-                Lanthanoide (58-71)
-              </h3>
-              <div className="h-px flex-grow bg-gradient-to-l from-transparent to-cyan-900/40"></div>
-            </div>
-            <div className="overflow-x-auto"><div className="grid grid-cols-14 min-w-[1100px] lg:min-w-full border border-black/40 bg-black/20">
-              {lanthanoids.map(el => (
-                <div key={`lan-${el.atomicNumber}`} className={`transition-all duration-300 ${isSearchActive && !matchesSearchAndFilters(el) ? 'opacity-10 grayscale scale-90 pointer-events-none' : 'opacity-100 element-match'}`}>
-                  <ElementTile element={el} rounded={rounded} onClick={setSelectedElement} />
+        <div className="w-full max-w-[1500px] flex flex-col gap-8 relative z-0 mt-8">
+          {isLanthanoidExpanded && isNebengruppeVisible && (
+            <div className="animate-in slide-in-from-top-6 fade-in duration-700 ease-out">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-cyan-900/40"></div>
+                <h3 className="text-cyan-400 font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-3 px-6 py-2 rounded-2xl bg-cyan-950/20 border border-cyan-900/20 backdrop-blur-md">
+                  Lanthanoide (58-71)
+                </h3>
+                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-cyan-900/40"></div>
+              </div>
+              <div className="overflow-x-auto flex justify-center">
+                <div className="grid grid-cols-14 w-max border border-black/40 bg-black/20">
+                  {lanthanoids.map(el => (
+                    <div key={`lan-${el.atomicNumber}`} className={`w-[60px] transition-all duration-300 ${isSearchActive && !matchesSearchAndFilters(el) ? 'opacity-10 grayscale scale-90 pointer-events-none' : 'opacity-100 element-match'}`}>
+                      <ElementTile element={el} rounded={rounded} onClick={setSelectedElement} />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div></div>
-          </div>
-        )}
-        {isActinoidExpanded && (
-          <div className="animate-in slide-in-from-top-6 fade-in duration-700 ease-out">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-px flex-grow bg-gradient-to-r from-transparent to-purple-900/40"></div>
-              <h3 className="text-purple-400 font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-3 px-6 py-2 rounded-2xl bg-purple-950/20 border border-purple-900/20 backdrop-blur-md">
-                Actinoide (90-103)
-              </h3>
-              <div className="h-px flex-grow bg-gradient-to-l from-transparent to-purple-900/40"></div>
+              </div>
             </div>
-            <div className="overflow-x-auto"><div className="grid grid-cols-14 min-w-[1100px] lg:min-w-full border border-black/40 bg-black/20">
-              {actinoids.map(el => (
-                <div key={`act-${el.atomicNumber}`} className={`transition-all duration-300 ${isSearchActive && !matchesSearchAndFilters(el) ? 'opacity-10 grayscale scale-90 pointer-events-none' : 'opacity-100 element-match'}`}>
-                  <ElementTile element={el} rounded={rounded} onClick={setSelectedElement} />
+          )}
+          {isActinoidExpanded && isNebengruppeVisible && (
+            <div className="animate-in slide-in-from-top-6 fade-in duration-700 ease-out">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-purple-900/40"></div>
+                <h3 className="text-purple-400 font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-3 px-6 py-2 rounded-2xl bg-purple-950/20 border border-purple-900/20 backdrop-blur-md">
+                  Actinoide (90-103)
+                </h3>
+                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-purple-900/40"></div>
+              </div>
+              <div className="overflow-x-auto flex justify-center">
+                <div className="grid grid-cols-14 w-max border border-black/40 bg-black/20">
+                  {actinoids.map(el => (
+                    <div key={`act-${el.atomicNumber}`} className={`w-[60px] transition-all duration-300 ${isSearchActive && !matchesSearchAndFilters(el) ? 'opacity-10 grayscale scale-90 pointer-events-none' : 'opacity-100 element-match'}`}>
+                      <ElementTile element={el} rounded={rounded} onClick={setSelectedElement} />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div></div>
-          </div>
-        )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="w-full max-w-[1500px] mt-16 p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 backdrop-blur-2xl relative z-0">
@@ -430,10 +451,18 @@ const App: React.FC = () => {
       <style>{`
         .ptable-grid { 
           display: grid; 
-          grid-template-columns: 40px repeat(18, minmax(0, 1fr)); 
+          grid-template-rows: 32px repeat(7, minmax(0, 1fr));
           gap: 1px; 
+          position: relative;
+          width: max-content;
         }
-        .grid-cols-14 { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 1px; }
+        .full-grid {
+          grid-template-columns: 40px repeat(18, 60px);
+        }
+        .compact-grid {
+          grid-template-columns: 40px repeat(8, 60px);
+        }
+        .grid-cols-14 { display: grid; grid-template-columns: repeat(14, 60px); gap: 1px; }
         ::-webkit-scrollbar { height: 3px; }
         ::-webkit-scrollbar-thumb { background: #312e81; border-radius: 10px; }
       `}</style>

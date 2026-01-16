@@ -45,27 +45,37 @@ const ElementModal: React.FC<ElementModalProps> = ({ element, onClose, tempUnit,
     label, 
     value, 
     isClickable, 
-    onClick 
+    onClick,
+    valueClassName = "",
+    labelClassName = ""
   }: { 
     label: string; 
     value: string | number | null; 
     isClickable?: boolean;
     onClick?: () => void;
+    valueClassName?: string;
+    labelClassName?: string;
   }) => (
     <div 
       onClick={onClick}
       className={`flex justify-between items-center py-2 border-b border-white/10 ${isClickable ? 'cursor-pointer transition-opacity active:opacity-60' : ''}`}
     >
-      <span className="text-gray-400 font-medium">{label}</span>
-      <span className="text-white font-mono">
+      <span className={`text-gray-400 font-medium ${labelClassName}`}>{label}</span>
+      <span className={`text-white font-mono ${valueClassName}`}>
         {value ?? 'N/A'}
       </span>
     </div>
   );
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-300">
-      <div className="bg-slate-900 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-white/20 animate-in zoom-in-95 duration-300">
+    <div 
+      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-300"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-slate-900 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-white/20 animate-in zoom-in-95 duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={`${CATEGORY_COLORS[element.category]} p-6 text-black relative`}>
           <button 
             onClick={onClose}
@@ -85,20 +95,28 @@ const ElementModal: React.FC<ElementModalProps> = ({ element, onClose, tempUnit,
         <div className="p-8 space-y-2">
           <div className="grid grid-cols-2 gap-x-8 gap-y-1">
             <DetailRow label="Protonenzahl" value={element.atomicNumber} />
+            <DetailRow label="Elektronenzahl" value={element.atomicNumber} />
             <DetailRow label="Nukleonenzahl" value={element.atomicMass} />
             <DetailRow label="Dichte" value={element.density ? `${element.density} g/cm³` : 'N/A'} />
-            <DetailRow label="Zustand" value={STATE_LABELS[element.state]} />
+            <DetailRow 
+              label="Zustand bei 20 ℃" 
+              value={STATE_LABELS[element.state]} 
+              labelClassName="text-[0.65rem] uppercase tracking-tight"
+            />
+            <div className="hidden md:block"></div>
             <DetailRow 
               label="Schmelzpunkt" 
               value={formatTemp(element.meltingPoint)} 
               isClickable={element.meltingPoint !== null}
               onClick={element.meltingPoint !== null ? onToggleUnit : undefined}
+              valueClassName="text-[0.85em]"
             />
             <DetailRow 
               label="Siedepunkt" 
               value={formatTemp(element.boilingPoint)} 
               isClickable={element.boilingPoint !== null}
               onClick={element.boilingPoint !== null ? onToggleUnit : undefined}
+              valueClassName="text-[0.85em]"
             />
           </div>
 
