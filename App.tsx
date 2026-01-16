@@ -64,20 +64,16 @@ const App: React.FC = () => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       
-      // 1. Check if we clicked on any relevant PSE control
       const isSearchClick = searchContainerRef.current?.contains(target);
       const isMatchingTileClick = target.closest('.element-match');
       const isControlClick = target.closest('.control-btn');
       const isFilterMenuClick = filterMenuRef.current?.contains(target);
 
-      // 2. If filter menu is open and we click outside IT
       if (isFilterMenuOpen && !isFilterMenuClick && !isSearchClick) {
         setIsFilterMenuOpen(false);
-        // Important: We stop here to only close the menu, NOT the search bar
         return;
       }
 
-      // 3. If search bar is open and we click outside everything relevant
       if (isSearchOpen && !isSearchClick && !isMatchingTileClick && !isControlClick && !isFilterMenuClick) {
         setIsSearchOpen(false);
         setIsFilterMenuOpen(false);
@@ -117,7 +113,6 @@ const App: React.FC = () => {
     }));
   };
 
-  // Shell Quantum mapping for the legend
   const shellQuantumMap: Record<ElementCategory, string> = {
     [ElementCategory.K]: 'n = 1',
     [ElementCategory.L]: 'n = 2',
@@ -163,15 +158,45 @@ const App: React.FC = () => {
   const isFilterActive = filters.states.length > 0 || filters.categories.length > 0 || filters.classifications.length > 0;
   const isSearchActive = searchQuery.trim().length > 0 || isFilterActive;
   
-  // Check if any element at all matches
   const hasNoResults = useMemo(() => {
     if (!isSearchActive) return false;
     return !ELEMENTS.some(matchesSearchAndFilters);
   }, [searchQuery, filters, isSearchActive]);
 
+  const getMainGroupLabel = (group: number): string | null => {
+    if (group === 1) return 'I';
+    if (group === 2) return 'II';
+    if (group === 13) return 'III';
+    if (group === 14) return 'IV';
+    if (group === 15) return 'V';
+    if (group === 16) return 'VI';
+    if (group === 17) return 'VII';
+    if (group === 18) return 'VIII';
+    return null;
+  };
+
   const renderTable = () => {
     const grid: React.ReactNode[] = [];
+
+    // Header Row: Subtile Hauptgruppen (I-VIII)
+    grid.push(<div key="label-header-corner" className="w-full h-8" />); // Corner empty
+    for (let c = 1; c <= 18; c++) {
+      const label = getMainGroupLabel(c);
+      grid.push(
+        <div key={`group-label-${c}`} className="w-full h-8 flex items-center justify-center">
+          <span className="text-[10px] font-black font-mono text-indigo-500/30 uppercase tracking-widest">{label}</span>
+        </div>
+      );
+    }
+
     for (let r = 1; r <= 7; r++) {
+      // Period Label: Subtile Periodennummer (1-7)
+      grid.push(
+        <div key={`period-label-${r}`} className="w-full aspect-[1/2] flex items-center justify-center">
+          <span className="text-[12px] font-black font-mono text-indigo-500/30">{r}</span>
+        </div>
+      );
+
       for (let c = 1; c <= 18; c++) {
         const isExpansionCell = (r === 6 && c === 3) || (r === 7 && c === 3);
         const isLanthanoidTrigger = r === 6 && c === 3;
@@ -231,7 +256,6 @@ const App: React.FC = () => {
               <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
             
-            {/* Filter Toggle Button */}
             <button 
               onClick={(e) => { e.stopPropagation(); setIsFilterMenuOpen(!isFilterMenuOpen); }}
               className={`absolute right-4 p-2 rounded-lg transition-all ${isFilterMenuOpen || isFilterActive ? 'text-indigo-400 bg-indigo-500/20' : 'text-slate-500 hover:text-indigo-400'}`}
@@ -242,7 +266,6 @@ const App: React.FC = () => {
               {isFilterActive && <div className="absolute top-1 right-1 w-2 h-2 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]"></div>}
             </button>
 
-            {/* Filter Dropdown Menu - Floating Top Layer */}
             {isFilterMenuOpen && (
               <div 
                 ref={filterMenuRef}
@@ -405,7 +428,11 @@ const App: React.FC = () => {
         onToggleUnit={toggleTempUnit}
       />
       <style>{`
-        .ptable-grid { display: grid; grid-template-columns: repeat(18, minmax(0, 1fr)); gap: 1px; }
+        .ptable-grid { 
+          display: grid; 
+          grid-template-columns: 40px repeat(18, minmax(0, 1fr)); 
+          gap: 1px; 
+        }
         .grid-cols-14 { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 1px; }
         ::-webkit-scrollbar { height: 3px; }
         ::-webkit-scrollbar-thumb { background: #312e81; border-radius: 10px; }

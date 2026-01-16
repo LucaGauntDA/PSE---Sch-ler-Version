@@ -64,7 +64,7 @@ const ElementModal: React.FC<ElementModalProps> = ({ element, onClose, tempUnit,
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-300">
       <div className="bg-slate-900 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-white/20 animate-in zoom-in-95 duration-300">
         <div className={`${CATEGORY_COLORS[element.category]} p-6 text-black relative`}>
           <button 
